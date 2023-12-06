@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .no-scrollbar::-webkit-scrollbar{
+      display: none;
+    }
+    .no-scrollbar{
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .applyBorder{
+        @apply border-[1px] border-dashed border-transparent hover:border-white
+    }
+   body{
+    background-color: #E3E6E6;
+   }
+    
+  }
+  html{
+    scroll-behavior: smooth;
+  }
