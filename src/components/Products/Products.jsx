@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import Product from './Product/Product'
+import { useDispatch, useSelector } from 'react-redux'
+import { setProducts } from '../../redux/slices/cartSlice'
 
 const Products = () => {
-    const [products,setProducts]=useState([])
-
+    const products=useSelector(state=>state.cartReducer.products)
+    const dispatch=useDispatch()
 
     // fetch product 
     useEffect(()=>{
         const getProducts=async()=>{
             fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())
-            .then(data=>setProducts(data))
+            .then(data=>dispatch(setProducts(data)))
         }
         getProducts()
     },[])
   return (
    
-        <div className='  mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3   p-10 gap-10  '>
+        <div className='  mx-auto grid grid-cols-1 place-items-center sm:grid-cols-2 xl:grid-cols-3   p-10 gap-10  '>
 
         {
        

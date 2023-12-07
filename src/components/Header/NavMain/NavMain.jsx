@@ -28,7 +28,7 @@ const NavMain = () => {
    
   ]
   return (
-    <div className='bg-[#232f3e] w-full flex fixed top-[60px] z-50 items-center h-[40px]  px-2 overflow-hidden no-scrollbar'>
+    <div className='bg-[#232f3e] w-full flex fixed top-[60px] z-40 items-center h-[40px]  px-2 overflow-hidden no-scrollbar'>
       {/* nav main left */}
       <div className='h-full flex items-center mr-4'>
         <Menu/>

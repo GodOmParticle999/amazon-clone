@@ -5,8 +5,8 @@ import Products from '../components/Products/Products'
 const HomePage = () => {
   return (
     <div  >
-      <div className='w-full h-auto z-0'>
-
+      <div className='w-full  h-auto z-0'>
+        
      <Banner/>
      <div className='-mt-16 md:-mt-[132px] relative z-10'>
 

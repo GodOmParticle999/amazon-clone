@@ -3,7 +3,9 @@ import SubNmain from "./SubNmain/SubNmain";
 import { logo } from "../../../assets/imgExporter";
 import {  useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
+import SearchProduct from "../../SearchProducts/SearchProduct";
 const Navbar = () => {
+  const [searchText,setSearchText]=useState("")
   const [total,setTotal]=useState(0)
   const products=useSelector((state)=>state.cartReducer.items)
  useEffect(()=>{
@@ -37,6 +39,9 @@ const Navbar = () => {
   },
     
   ]
+  const searchHandler=(e)=>{
+   setSearchText(e.target.value)
+  }
   return (
     <div className="bg-[#131921] h-[60px] w-full fixed top-0 z-50 text-white flex 
     px-4 items-center justify-between">
@@ -68,9 +73,10 @@ const Navbar = () => {
         <input className=" flex-grow outline-none border-none py-2 rounded-tr-md
         px-2 rounded-br-md " 
         type="text"
+        onChange={searchHandler}
          placeholder="Search any product" />
       </div>
-       
+       {searchText&&<SearchProduct searchText={searchText}/>}
       {/* nav right */}
       <div className="flex items-center gapx-4">
        <SubNmain sub={"Hello,Navin"} main={"Accounts & Lists "}/>
