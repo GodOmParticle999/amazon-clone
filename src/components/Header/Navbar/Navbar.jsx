@@ -91,7 +91,7 @@ const Navbar = () => {
        <SubNmain sub={"Returns "} main={"& Orders "}/>
       <Link to={"/cart"} className="applyBorder text-3xl mr-4 cursor-pointer">
         <span className="relative">cart
-          <span className="absolute -top-2 px-2 py-1 bg-orange-400 rounded-full ">{total}</span>
+          <span className="absolute -top-[2px] px-2 text-xs py-1 bg-orange-400 rounded-full ">{total}</span>
           </span>
       </Link>
       </div>

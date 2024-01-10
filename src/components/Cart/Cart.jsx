@@ -22,11 +22,16 @@ const Cart = () => {
   }, [cartItems]);
   return (
     <div className="mt-[100px] w-full  flex flex-col md:flex-row justify-center  items-center py-10 px-3">
-      <div className="flex md:w-4/5 flex-col justify-center md:flex-wrap p-3  gap-4 ">
+      <h1 className="text-2xl ">
+        Review Items
+      </h1>
+     <div className="h-[500px] overflow-y-scroll mb-4">
+     <div className="flex md:w-4/5 flex-col justify-center md:flex-wrap p-3  gap-4 ">
         {cartItems.map((items) => (
          <Cartcard key={items.id} items={items}/>
         ))}
       </div>
+     </div>
 
       {cartItems.length > 0 ? (
       <CartCheckoutSec/>

@@ -12,7 +12,10 @@ const Products = () => {
         const getProducts=async()=>{
             fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())
-            .then(data=>dispatch(setProducts(data)))
+            .then(data=>{
+                dispatch(setProducts(data))
+                console.log(data)
+            })
         }
         getProducts()
     },[])

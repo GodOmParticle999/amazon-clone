@@ -8,10 +8,11 @@ const CartCheckoutSec = () => {
   const total =useSelector(state=>state.cartReducer.total)
   return (
     <div
-      className="flex md:gap-10 gap-4 flex-col min-h-[250px]  bg-white px-5 justify-center 
-   md:fixed  md:top-[100px] shadow-md shadow-slate-400
-  md:right-4 min-w-[200px] w-[280px] md:w-1/5   items-center"
+      className="flex md:gap-10 gap-4 flex-col h-[400px] max-h-screen bg-white px-5 justify-center items-center 
+     shadow-md shadow-slate-400
+   min-w-[200px] w-[280px] md:w-1/5  "
     >
+      <h1>Order Summary</h1>
       <h1 className="font-semibold md:text-2xl text-xl">
         TOTAL : <span className=" text-3xl text-violet-700">₹{total}</span>
       </h1>

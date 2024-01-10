@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import bannerImgs from "../../assets/imgExporter";
 
 const Banner = () => {
@@ -6,7 +6,7 @@ const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [intervalId,setIntervalId]=useState(null)
 
-  const handleSwipe = (direction) => {
+  const handleSwipe = useCallback((direction) => {
     clearInterval(intervalId)
     if (direction === "left") {
       
@@ -25,7 +25,7 @@ const Banner = () => {
         }
       });
     }
-  };
+  },[intervalId])
   useEffect(() => {
     const id = setInterval(() => {
       handleSwipe("right");
@@ -50,7 +50,7 @@ const Banner = () => {
       </button>
       <div
         style={{ translate: "-50%" }}
-        className="flex left-[50%] gap-6 z-20 absolute bottom-8 md:bottom-28 lg:bottom-[110px]"
+        className="flex left-[50%] gap-6 z-10 absolute bottom-8 md:bottom-28 lg:bottom-[110px]"
       >
         {bannerImgs.map((_, index) => (
           <button

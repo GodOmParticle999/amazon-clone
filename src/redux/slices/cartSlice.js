@@ -6,7 +6,8 @@ const initialState={
     total:0,
     products:[],
     showSearch:false,
-    searchText:""
+    searchText:"",
+    showRemove:false
 }
 
 const cartSlice=createSlice({
