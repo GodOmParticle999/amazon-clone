@@ -19,22 +19,27 @@ const Cart = () => {
     );
     const totalAmount = prices.reduce((totalAmount, productPrice) => totalAmount + productPrice, 0);
       dispatch(calculateTotal(totalAmount))
-  }, [cartItems]);
+  }, [cartItems, dispatch]);
   return (
-    <div className="mt-[100px] w-full  flex flex-col md:flex-row justify-center  items-center py-10 px-3">
-      <h1 className="text-2xl ">
+    <div className="mt-[90px] w-full  flex flex-col md:flex-row md:justify-between  items-center md:items-start py-10 px-3">
+     
+
+      {cartItems.length > 0 ? (
+        <>
+        <div className="flex flex-col md:w-4/5 items-center  ">
+     <h1 className="text-4xl font-serif  ">
         Review Items
       </h1>
-     <div className="h-[500px] overflow-y-scroll mb-4">
-     <div className="flex md:w-4/5 flex-col justify-center md:flex-wrap p-3  gap-4 ">
+     <div className="min-h-[300px] max-h-[500px] mt-1 overflow-y-scroll mb-4">
+     <div className="flex  flex-col justify-center md:flex-row md:flex-wrap p-3  gap-4 ">
         {cartItems.map((items) => (
          <Cartcard key={items.id} items={items}/>
         ))}
       </div>
      </div>
-
-      {cartItems.length > 0 ? (
+     </div>
       <CartCheckoutSec/>
+        </>
       ):( <Link
         className=" px-10  shadow-md shadow-gray-300 py-4 bg-yellow-500 rounded-md font-bold
         whitespace-nowrap text-white"

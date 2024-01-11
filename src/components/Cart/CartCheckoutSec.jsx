@@ -8,18 +8,24 @@ const CartCheckoutSec = () => {
   const total =useSelector(state=>state.cartReducer.total)
   return (
     <div
-      className="flex md:gap-10 gap-4 flex-col h-[400px] max-h-screen bg-white px-5 justify-center items-center 
-     shadow-md shadow-slate-400
-   min-w-[200px] w-[280px] md:w-1/5  "
+      className=" h-[250px]   
+     
+    min-w-[250px] md:w-1/5 "
     >
-      <h1>Order Summary</h1>
-      <h1 className="font-semibold md:text-2xl text-xl">
-        TOTAL : <span className=" text-3xl text-violet-700">₹{total}</span>
+     <h1 className="text-3xl font-serif mb-3 text-center whitespace-nowrap">Order Summary</h1>
+     <div className="bg-white h-[350px] md:p-2 p-5  flex flex-col gap-10 justify-center">
+      <div className="text-xl flex justify-between px-2">
+        <p>shipping charge :</p>
+        <p> free</p>
+      </div>
+      <h1 className="font-semibold flex justify-between md:text-2xl text-xl">
+        <p>TOTAL : </p>
+        <p className=" text-3xl text-violet-700">₹{total}</p>
       </h1>
       <div className="flex flex-col gap-4">
         <Link
           to={"/checkout"}
-          className="md:px-6 md:py-3 px-2 py-1 rounded-md bg-yellow-500 font-bold text-white 
+          className="md:px-4 md:py-3 p-1 rounded-md bg-yellow-500 font-bold text-center text-white 
       shadow-md shadow-gray-300 text-xl whitespace-nowrap"
         >
           Checkout Now
@@ -34,6 +40,7 @@ const CartCheckoutSec = () => {
           Clear Cart
         </button>
       </div>
+     </div>
     </div>
   );
 };
