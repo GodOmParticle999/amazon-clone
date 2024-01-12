@@ -2,12 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
-  orderedProducts: [],
+  
   total: 0,
   products: [],
-  showSearch: false,
-  searchText: "",
-  showRemove: false,
+  searchText: ""
 };
 
 const cartSlice = createSlice({
@@ -24,16 +22,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push(action.payload);
       }
-      const existingProduct = state.orderedProducts.find(
-        (item) => item.productId === action.payload.id
-      );
-      if (existingProduct) {
-         console.log(existingProduct)
-         if(existingProduct.quantity===5) return
-          existingProduct.quantity++
-      } else {
-         state.orderedProducts.push({"productId":action.payload.id,"quantity":action.payload.quantity})
-      }
+    
     },
     increaseQuantity: (state, action) => {
       const item = state.items.find((item) => item.id === action.payload.id);
@@ -59,9 +48,9 @@ const cartSlice = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload;
     },
-    showSearchPage: (state, action) => {
-      state.showSearch = action.payload;
-    },
+    // showSearchPage: (state, action) => {
+    //   state.showSearch = action.payload;
+    // },
     setSearchText: (state, action) => {
       state.searchText = action.payload;
     },
@@ -75,7 +64,6 @@ export const {
   removeItem,
   calculateTotal,
   setProducts,
-  showSearchPage,
   setSearchText,
 } = cartSlice.actions;
 export default cartSlice.reducer;

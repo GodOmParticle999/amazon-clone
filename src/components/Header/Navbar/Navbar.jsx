@@ -5,11 +5,11 @@ import {  useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 import SearchProduct from "../../SearchProducts/SearchProduct";
 import { useDispatch } from "react-redux";
-import { setSearchText, showSearchPage } from "../../../redux/slices/cartSlice";
+import { setSearchText } from "../../../redux/slices/cartSlice";
 const Navbar = () => {
   const [total,setTotal]=useState(0)
   const products=useSelector((state)=>state.cartReducer.items)
-  const showSearch=useSelector(state=>state.cartReducer.showSearch)
+  // const showSearch=useSelector(state=>state.cartReducer.showSearch)
   const searchText=useSelector(state=>state.cartReducer.searchText)
 
   const dispatch=useDispatch()
@@ -45,7 +45,7 @@ const Navbar = () => {
     
   ]
   const searchHandler=(e)=>{
-    dispatch(showSearchPage(true))
+  
    dispatch(setSearchText(e.target.value))
    
   }
@@ -63,7 +63,7 @@ const Navbar = () => {
           alt="Amazon-Logo"
         />
        </Link>
-        <SubNmain sub={"Deliver to Navin"} main={"Lohardaga"}/>
+        <SubNmain sub={"Deliver to Navin"} main={"Lohardaga"} hidden={"hidden"}/>
       </div>
       {/* nav fill */}
 
@@ -84,12 +84,18 @@ const Navbar = () => {
         value={searchText}
          placeholder="Search any product" />
       </div>
-       {showSearch&&<SearchProduct />}
+      <input className="  outline-none md:hidden border-none w-16 py-1 rounded-tr-md
+        px-1 rounded-md text-black " 
+        type="text"
+        onChange={searchHandler}
+        value={searchText}
+         placeholder="Search" />
+       {searchText&&<SearchProduct />}
       {/* nav right */}
       <div className="flex items-center gapx-4">
-       <SubNmain sub={"Hello,Navin"} main={"Accounts & Lists "}/>
-       <SubNmain sub={"Returns "} main={"& Orders "}/>
-      <Link to={"/cart"} className="applyBorder text-3xl mr-4 cursor-pointer">
+      <Link to={'/login'}> <SubNmain sub={"Hello,Navin"} main={"Accounts"} /></Link>
+       <SubNmain sub={"Returns "} main={"& Orders "} hidden={"hidden"}/>
+      <Link to={"/cart"} className="applyBorder text-xl mr-4 cursor-pointer">
         <span className="relative">cart
           <span className="absolute -top-[2px] px-2 text-xs py-1 bg-orange-400 rounded-full ">{total}</span>
           </span>

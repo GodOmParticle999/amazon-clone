@@ -9,18 +9,19 @@ const SearchProduct = () => {
 
 useEffect(()=>{
    const searchProducts=()=>{
-    const foundItems=products.filter((item)=>item.title.includes(searchText))
+    const foundItems=products.filter((item)=>item.title.toLowerCase().includes(searchText.toLowerCase()))
     setFoundProducts(foundItems)
    }
    searchProducts()
-},[searchText])
+},[searchText,products])
 
 
   return (
-    <div className='absolute top-[60px] backdrop-blur-sm flex h-[1000px] justify-center overflow-y-auto z-50  w-screen'>
+    <div className='absolute top-[60px] backdrop-blur-sm flex h-[300px] justify-center overflow-y-auto z-50  w-screen'>
        <div className='bg-gray-400 flex flex-col gap-2 w-full h-full overflow-y-scroll px-4 '>
+      <h1 className='text-center font-serif text-xl'>   {foundProducts.length} products found</h1>
        {
-        foundProducts.map((product)=>(
+       foundProducts&&foundProducts.map((product)=>(
            <FoundProduct key={product.id} product={product}/>
         ))
     }
