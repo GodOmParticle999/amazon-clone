@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const Checkout = () => {
-  const [res, setRes] = useState();
+  const [response, setResponse] = useState();
   const cartItems = [];
-  const Items = useSelector((state) => state.cartReducer.items);
-  const orderPrice = useSelector((state) => state.cartReducer.total);
+  const Items = useSelector((state) => state.cart.items);
+  const orderPrice = useSelector((state) => state.cart.total);
+  const user=useSelector((state)=>state.user.user)
   // extract required info of the products to be ordered
-
   Items.forEach((element) => {
     cartItems.push({ productId: element.id, quantity: element.quantity });
   });
@@ -16,29 +16,29 @@ const Checkout = () => {
     const order=async()=>{
       const res=await fetch('http://localhost:5000/order/placeOrder',{
       method:"POST",
+      // use this credentials whenever accessing the protected route
      credentials:'include' ,
       headers:{
         'Content-Type':'application/json',
       },
       body:JSON.stringify( { orderPrice:orderPrice,
-      customer:"6598ac435c8ac5bf95f3b06c",
+      customer:user._id,
       orderedProducts:cartItems})
       })
-      if(!res.ok){
-        throw new Error("failed to create order")
-      }
+     
       const data=await res.json()
 
-      setRes(data)
+      setResponse(data)
+     
     }
     order()
-  })
+  },[])
   return (
     <div className="mt-[100px]">
       Checkout page
       {console.log("orderedProducts", Items)}
       {console.log(cartItems)}
-      {console.log(res)}
+      {console.table(response)}
     </div>
   );
 };
