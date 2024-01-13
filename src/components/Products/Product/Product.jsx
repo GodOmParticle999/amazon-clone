@@ -7,7 +7,7 @@ const Product = ({ product }) => {
   const [quan, setQuantity] = useState(0);
   const dispatch = useDispatch();
   const navigate=useNavigate()
-  const items = useSelector((state) => state.cartReducer.items);
+  const items = useSelector((state) => state.cart.items);
   
 
   useEffect(() => {

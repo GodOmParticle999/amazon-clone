@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const CartCheckoutSec = () => {
   const dispatch = useDispatch();
-  const total =useSelector(state=>state.cartReducer.total)
+  const total =useSelector(state=>state.cart.total)
   return (
     <div
       className=" h-[250px]   

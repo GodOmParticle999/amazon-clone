@@ -8,9 +8,10 @@ import { useDispatch } from "react-redux";
 import { setSearchText } from "../../../redux/slices/cartSlice";
 const Navbar = () => {
   const [total,setTotal]=useState(0)
-  const products=useSelector((state)=>state.cartReducer.items)
+  const user=useSelector((state)=>state.user.user)
+  const products=useSelector((state)=>state.cart.items)
   // const showSearch=useSelector(state=>state.cartReducer.showSearch)
-  const searchText=useSelector(state=>state.cartReducer.searchText)
+  const searchText=useSelector(state=>state.cart.searchText)
 
   const dispatch=useDispatch()
  useEffect(()=>{
@@ -93,7 +94,7 @@ const Navbar = () => {
        {searchText&&<SearchProduct />}
       {/* nav right */}
       <div className="flex items-center gapx-4">
-      <Link to={'/login'}> <SubNmain sub={"Hello,Navin"} main={"Accounts"} /></Link>
+      <Link to={'/login'}> <SubNmain sub={"Hello"} main={`${user.name.toUpperCase()} `} /></Link>
        <SubNmain sub={"Returns "} main={"& Orders "} hidden={"hidden"}/>
       <Link to={"/cart"} className="applyBorder text-xl mr-4 cursor-pointer">
         <span className="relative">cart

@@ -8,7 +8,7 @@ import { calculateTotal } from "../../redux/slices/cartSlice";
 
 const Cart = () => {
    const dispatch=useDispatch()
-  const cartItems = useSelector((state) => state.cartReducer.items);
+  const cartItems = useSelector((state) => state.cart.items);
 
   
 

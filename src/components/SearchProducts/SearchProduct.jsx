@@ -4,8 +4,8 @@ import FoundProduct from './FoundProduct'
 
 const SearchProduct = () => {
     const [foundProducts,setFoundProducts]=useState([])
-    const products=useSelector(state=>state.cartReducer.products)
-    const searchText=useSelector(state=>state.cartReducer.searchText)
+    const products=useSelector(state=>state.cart.products)
+    const searchText=useSelector(state=>state.cart.searchText)
 
 useEffect(()=>{
    const searchProducts=()=>{

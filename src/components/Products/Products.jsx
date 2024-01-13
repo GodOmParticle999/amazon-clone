@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from '../../redux/slices/cartSlice'
 
 const Products = () => {
-    const products=useSelector(state=>state.cartReducer.products)
+    const products=useSelector(state=>state.cart.products)
     const dispatch=useDispatch()
 
     // fetch product 
